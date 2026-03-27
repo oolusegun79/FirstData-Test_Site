@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FirstDATA Consulting LLC — Azure AI & Data Engineering</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-deep:    #016839;
+      --green-mid:     #1a7a4a;
+      --green-bright:  #2a9d5c;
+      --green-mint:    #D6FCEA;
+      --green-glow:    rgba(1,104,57,0.35);
+      --amber:         #FAA61A;
+      --amber-light:   #FEF2DD;
+      --blue-status:   #64B5F3;
+      --teal-status:   #68DBBA;
+      --bg-base:       #0a1714;
+      --bg-surface:    #152C29;
+      --bg-elevated:   #1e3832;
+      --bg-float:      #2a4a43;
+      --border:        rgba(1,104,57,0.22);
+      --border-light:  rgba(214,252,234,0.12);
+      --text-primary:  #EFF6F5;
+      --text-muted:    #859693;
+      --text-dim:      #5D716E;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1,h2,h3,h4 {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    /* noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.6;
+    }
+
+    /* radial glow blobs */
+    .glow-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(10,23,20,0.8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .logo img { height: 38px; }
+    nav .nav-links { display: flex; align-items: center; gap: 2rem; }
+    nav .nav-links a {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+      color: var(--text-muted); text-decoration: none; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav .nav-links a:hover { color: var(--green-mint); }
+    nav .nav-cta {
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--green-deep);
+      border-radius: 6px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--green-mint); background: transparent; cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    nav .nav-cta:hover {
+      background: rgba(1,104,57,0.15);
+      box-shadow: 0 0 18px var(--green-glow);
+    }
+    nav .nav-cta:focus-visible { outline: 2px solid var(--green-deep); outline-offset: 2px; }
+
+    /* hero */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 5vw 80px;
+      overflow: hidden;
+    }
+#hero .hero-content { position: relative; z-index: 2; max-width: 660px; }
+    #hero .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.25rem;
+      padding: 0.3rem 0.9rem;
+      border: 1px solid rgba(250,166,26,0.3);
+      border-radius: 100px;
+      background: rgba(250,166,26,0.08);
+    }
+    #hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+    #hero h1 span.accent-green { color: var(--green-mint); }
+    #hero h1 span.accent-amber { color: var(--amber); }
+    #hero p {
+      font-size: 1.05rem; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: 2.25rem; max-width: 540px;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-bottom: 2.25rem;
+    }
+    .hero-badge {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+      padding: 0.3rem 0.75rem; border-radius: 4px;
+      background: rgba(214,252,234,0.07); border: 1px solid rgba(214,252,234,0.18);
+      color: var(--green-mint);
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--green-deep);
+      color: var(--green-mint); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; text-transform: uppercase;
+      border-radius: 8px; text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(1,104,57,0.45), 0 1px 4px rgba(0,0,0,0.5);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(1,104,57,0.55); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .btn-amber {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--amber);
+      color: #0a1714; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; text-transform: uppercase;
+      border-radius: 8px; text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(250,166,26,0.35), 0 1px 4px rgba(0,0,0,0.4);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .btn-amber:hover { background: #fbb83a; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(250,166,26,0.5); }
+    .btn-amber:active { transform: translateY(0); }
+    .btn-amber:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--text-primary); font-weight: 600; font-size: 0.88rem; letter-spacing: 0.04em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; text-decoration: none; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--green-deep); color: var(--green-mint); transform: translateY(-2px); }
+    .btn-secondary:active { transform: translateY(0); }
+    .btn-secondary:focus-visible { outline: 2px solid var(--green-deep); outline-offset: 2px; }
+
+    /* Hero graphic */
+    .hero-graphic {
+      position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
+      width: 480px; height: 480px;
+      z-index: 1;
+    }
+    .hex-ring {
+      position: absolute; inset: 0;
+      border: 1.5px solid rgba(1,104,57,0.3);
+      border-radius: 38% 62% 53% 47% / 43% 41% 59% 57%;
+      animation: morph 8s ease-in-out infinite;
+    }
+    .hex-ring:nth-child(2) {
+      inset: 40px;
+      border-color: rgba(1,104,57,0.4);
+      animation-delay: -2s; animation-duration: 10s;
+    }
+    .hex-ring:nth-child(3) {
+      inset: 90px;
+      border-color: rgba(214,252,234,0.3);
+      animation-delay: -4s; animation-duration: 7s;
+    }
+    .hex-core {
+      position: absolute;
+      inset: 140px;
+      background: radial-gradient(circle at 40% 40%, #016839 0%, #0a2e1c 50%, #0a1714 100%);
+      border-radius: 30% 70% 50% 50% / 40% 40% 60% 60%;
+      box-shadow: 0 0 60px rgba(1,104,57,0.5), 0 0 120px rgba(1,104,57,0.15);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    /* Floating data cards */
+    .float-card {
+      position: absolute;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--text-primary);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      white-space: nowrap;
+    }
+    .float-card .dot { width:8px; height:8px; border-radius:50%; background:var(--green-bright); display:inline-block; margin-right:0.4rem; box-shadow:0 0 8px var(--green-bright); }
+    .float-card .dot-amber { width:8px; height:8px; border-radius:50%; background:var(--amber); display:inline-block; margin-right:0.4rem; box-shadow:0 0 8px var(--amber); }
+    .float-card-1 { top: 18%; right: calc(5vw + 400px); animation: floatY 5s ease-in-out infinite; }
+    .float-card-2 { top: 50%; right: calc(5vw + 450px); animation: floatY 6s ease-in-out infinite; animation-delay:-1.5s; }
+    .float-card-3 { bottom: 20%; right: calc(5vw + 360px); animation: floatY 4.5s ease-in-out infinite; animation-delay:-3s; }
+
+    @keyframes morph {
+      0%,100% { border-radius: 38% 62% 53% 47% / 43% 41% 59% 57%; }
+      50%       { border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; }
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity:1; }
+      50%      { transform: scale(1.06); opacity:0.88; }
+    }
+    @keyframes floatY {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+
+    /* section base */
+    section { padding: 100px 5vw; position: relative; }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 0.75rem;
+    }
+    .section-eyebrow.green { color: var(--green-bright); }
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1.25rem;
+    }
+    .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.75; }
+
+    /* stats strip */
+    #stats {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 5vw;
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .stat-cell {
+      text-align: center; padding: 2.5rem 1rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 800; color: var(--green-mint);
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(214,252,234,0.3);
+    }
+    .stat-num.amber { color: var(--amber); text-shadow: 0 0 30px rgba(250,166,26,0.3); }
+    .stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* ===== SPECIALIZATIONS ===== */
+    #specializations { background: var(--bg-base); }
+    .spec-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+    .spec-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      outline: none;
+    }
+    .spec-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      opacity: 1;
+    }
+    .spec-card.llm::after { background: linear-gradient(90deg, var(--amber), #fbb83a); }
+    .spec-card.rag::after { background: linear-gradient(90deg, var(--blue-status), #90caf9); }
+    .spec-card.platform::after { background: linear-gradient(90deg, var(--green-deep), var(--green-bright)); }
+    .spec-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .spec-card:focus-visible { outline: 2px solid var(--green-deep); }
+    .spec-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem; font-weight: 800; line-height: 1;
+      margin-bottom: 1rem; opacity: 0.12; position: absolute; top: 1.5rem; right: 1.75rem;
+    }
+    .spec-card.llm .spec-num { color: var(--amber); }
+    .spec-card.rag .spec-num { color: var(--blue-status); }
+    .spec-card.platform .spec-num { color: var(--green-mint); }
+    .spec-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .spec-card.llm .spec-icon { background: rgba(250,166,26,0.12); border: 1px solid rgba(250,166,26,0.25); }
+    .spec-card.rag .spec-icon { background: rgba(100,181,243,0.12); border: 1px solid rgba(100,181,243,0.25); }
+    .spec-card.platform .spec-icon { background: rgba(1,104,57,0.15); border: 1px solid rgba(1,104,57,0.3); }
+    .spec-card h3 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+    .spec-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+    .spec-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+    .spec-tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+    }
+    .spec-card.llm .spec-tag { background: rgba(250,166,26,0.1); border: 1px solid rgba(250,166,26,0.2); color: var(--amber); }
+    .spec-card.rag .spec-tag { background: rgba(100,181,243,0.1); border: 1px solid rgba(100,181,243,0.2); color: var(--blue-status); }
+    .spec-card.platform .spec-tag { background: rgba(214,252,234,0.08); border: 1px solid rgba(214,252,234,0.18); color: var(--green-mint); }
+    .spec-bullets { list-style: none; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .spec-bullets li { font-size: 0.85rem; color: var(--text-muted); padding: 0.3rem 0; display: flex; gap: 0.5rem; }
+    .spec-bullets li::before { content: '▸'; flex-shrink: 0; font-size: 0.75rem; margin-top: 0.15rem; }
+    .spec-card.llm .spec-bullets li::before { color: var(--amber); }
+    .spec-card.rag .spec-bullets li::before { color: var(--blue-status); }
+    .spec-card.platform .spec-bullets li::before { color: var(--green-bright); }
+
+    /* services */
+    #services { background: var(--bg-surface); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+    .service-card {
+      background: var(--bg-surface);
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+      outline: none;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green-deep), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover, .service-card:focus-within { background: var(--bg-elevated); }
+    .service-card:hover::before, .service-card:focus-within::before { opacity: 1; }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(1,104,57,0.12);
+      border: 1px solid rgba(1,104,57,0.25);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .service-price {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 0.75rem;
+    }
+    .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+    .service-features { list-style: none; margin-top: 1rem; }
+    .service-features li {
+      font-size: 0.85rem; color: var(--text-muted); padding: 0.3rem 0;
+      display: flex; gap: 0.5rem; align-items: flex-start;
+    }
+    .service-features li::before { content: '→'; color: var(--green-bright); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.05rem; }
+
+    /* about */
+    #about {
+      background: var(--bg-elevated);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-image-wrap { position: relative; }
+    .about-photo-placeholder {
+      width: 100%; aspect-ratio: 4/5;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-float) 100%);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1rem;
+    }
+    .avatar-ring {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #016839 0%, #0a1714 100%);
+      border: 2px solid var(--green-deep);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -1px; border-radius: 16px;
+      background: linear-gradient(160deg, rgba(1,104,57,0.15), transparent 60%);
+      pointer-events: none;
+    }
+    .expertise-list { list-style: none; margin-top: 1.5rem; }
+    .expertise-list li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .expertise-list li:last-child { border-bottom: none; }
+    .expertise-list li .tag {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+      background: rgba(1,104,57,0.12); border: 1px solid rgba(1,104,57,0.25);
+      color: var(--green-mint); white-space: nowrap;
+    }
+    .expertise-list li .tag.amber {
+      background: rgba(250,166,26,0.1); border-color: rgba(250,166,26,0.25);
+      color: var(--amber);
+    }
+    .cert-strip {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
+    }
+    .cert-badge {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+      padding: 0.35rem 0.8rem; border-radius: 6px;
+      background: rgba(100,181,243,0.1); border: 1px solid rgba(100,181,243,0.25);
+      color: var(--blue-status);
+    }
+
+    /* process */
+    #process { background: var(--bg-base); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 3.5rem; position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 38px; left: 12%; right: 12%;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+      z-index: 0;
+    }
+    .process-step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .step-num {
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800;
+      color: var(--green-mint);
+      margin: 0 auto 1.5rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .process-step:hover .step-num {
+      border-color: var(--green-deep);
+      box-shadow: 0 0 24px var(--green-glow);
+    }
+    .process-step h4 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .process-step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* case studies */
+    #case-studies { background: var(--bg-surface); }
+    .case-grid {
+      display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+      gap: 1.25rem; margin-top: 3.5rem;
+    }
+    .case-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      outline: none;
+    }
+    .case-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(1,104,57,0.08); }
+    .case-card:focus-visible { outline: 2px solid var(--green-deep); }
+    .case-card-img {
+      height: 180px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .case-card-img.cloud { background: linear-gradient(135deg, #0d3013 0%, #011501 100%); }
+    .case-card-img.rag { background: linear-gradient(135deg, #0d1d3a 0%, #01051a 100%); }
+    .case-card-img.pipe { background: linear-gradient(135deg, #1c1000 0%, #0a0800 100%); }
+    .case-card-img.fabric { background: linear-gradient(135deg, #1c0010 0%, #0a0008 100%); }
+    .case-card-img .img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,23,20,0.9) 0%, transparent 60%);
+    }
+    .case-card-img .case-icon { font-size: 3.5rem; opacity: 0.55; position: relative; z-index: 1; }
+    .case-card-body { padding: 1.5rem; }
+    .case-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem; border-radius: 4px;
+      display: inline-block; margin-bottom: 0.75rem;
+    }
+    .case-tag.azure { background: rgba(100,181,243,0.12); border: 1px solid rgba(100,181,243,0.22); color: var(--blue-status); }
+    .case-tag.ai { background: rgba(250,166,26,0.1); border: 1px solid rgba(250,166,26,0.2); color: var(--amber); }
+    .case-tag.data { background: rgba(104,219,186,0.1); border: 1px solid rgba(104,219,186,0.2); color: var(--teal-status); }
+    .case-card-body h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .case-card-body p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+    .case-metric {
+      display: inline-block; margin-top: 1rem;
+      font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+      color: var(--green-mint);
+    }
+    .case-metric-label { font-size: 0.75rem; color: var(--text-muted); margin-left: 0.25rem; }
+
+    /* tech stack */
+    #tech-stack { background: var(--bg-elevated); }
+    .tech-category { margin-bottom: 2.5rem; }
+    .tech-category-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-dim); margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+    }
+    .tech-grid {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+    }
+    .tech-pill {
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.55rem 1rem;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      cursor: default; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .tech-pill:hover { border-color: var(--green-deep); color: var(--green-mint); background: rgba(1,104,57,0.08); }
+    .tech-pill .tech-icon { font-size: 1rem; }
+    .tech-pill.amber:hover { border-color: var(--amber); color: var(--amber); background: rgba(250,166,26,0.07); }
+    .tech-pill.blue:hover { border-color: var(--blue-status); color: var(--blue-status); background: rgba(100,181,243,0.07); }
+
+    /* contact */
+    #contact {
+      background: var(--bg-base);
+      text-align: center; padding: 120px 5vw;
+      position: relative; overflow: hidden;
+    }
+    #contact .contact-card {
+      max-width: 680px; margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3.5rem;
+      position: relative; z-index: 1;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(1,104,57,0.06);
+    }
+    #contact h2 { font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    #contact p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem; }
+    .contact-info { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .contact-info a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .contact-info a:hover { color: var(--green-mint); }
+    .availability-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      background: rgba(104,219,186,0.1); border: 1px solid rgba(104,219,186,0.25);
+      font-size: 0.78rem; font-weight: 600; color: var(--teal-status);
+      margin-bottom: 1.5rem;
+    }
+    .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-status); box-shadow: 0 0 6px var(--teal-status); animation: pulse 2s ease-in-out infinite; }
+
+    /* footer */
+    footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5vw;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer img { height: 30px; opacity: 0.7; }
+    footer p { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* responsive */
+    @media (max-width: 1100px) {
+      .hero-graphic { width: 360px; height: 360px; }
+      .float-card-1 { right: calc(5vw + 290px); }
+      .float-card-2 { right: calc(5vw + 330px); }
+      .float-card-3 { right: calc(5vw + 260px); }
+      .spec-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 900px) {
+      .hero-graphic, .float-card { display: none; }
+      #about { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3) { border-top: 1px solid var(--border); }
+    }
+    @media (max-width: 640px) {
+      nav .nav-links { display: none; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-cell:last-child { border-bottom: none; }
+      .spec-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="brand_assets/firstdatalogo.png" alt="FirstDATA Consulting LLC" />
+  </div>
+  <div class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#specializations">Expertise</a>
+    <a href="#services">Services</a>
+    <a href="#case-studies">Case Studies</a>
+    <a href="#tech-stack">Tech Stack</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Book Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="glow-blob" style="width:600px;height:600px;background:radial-gradient(circle,rgba(1,104,57,0.12),transparent 70%);top:-150px;right:-150px;"></div>
+  <div class="glow-blob" style="width:350px;height:350px;background:radial-gradient(circle,rgba(250,166,26,0.06),transparent 70%);bottom:0;left:10%;"></div>
+
+  <div class="hero-content">
+    <div class="eyebrow">Azure AI &amp; Data Engineering Consultant</div>
+    <h1>LLMs, RAG &amp; <span class="accent-green">Data Platforms</span> That <span class="accent-amber">Actually Work</span></h1>
+    <p>I help organizations design, build, and scale AI-powered data platforms — from enterprise RAG systems to production LLM integrations on Azure.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">Azure OpenAI</span>
+      <span class="hero-badge">RAG Architecture</span>
+      <span class="hero-badge">Microsoft Fabric</span>
+      <span class="hero-badge">Databricks</span>
+      <span class="hero-badge">LangChain · Semantic Kernel</span>
+      <span class="hero-badge">Vector Search</span>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="#contact" class="btn-primary">Book Free Consultation</a>
+      <a href="#specializations" class="btn-secondary">See My Expertise</a>
+    </div>
+  </div>
+
+  <div class="hero-graphic">
+    <div class="hex-ring"></div>
+    <div class="hex-ring"></div>
+    <div class="hex-ring"></div>
+    <div class="hex-core"></div>
+  </div>
+
+  <div class="float-card float-card-1"><span class="dot"></span>Azure OpenAI · Live</div>
+  <div class="float-card float-card-2"><span class="dot-amber"></span>RAG Pipeline · Running</div>
+  <div class="float-card float-card-3"><span class="dot"></span>LLM Queries: 50K+/day</div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Databases Migrated</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num amber">80%</div>
+      <div class="stat-label">Reduction in Manual Processing</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">ADF Pipelines Delivered</div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIALIZATIONS -->
+<section id="specializations">
+  <div class="section-eyebrow">Core Expertise</div>
+  <h2 class="section-title">Three Pillars of My Practice</h2>
+  <p class="section-sub">Deep, end-to-end capability across LLMs, Retrieval-Augmented Generation, and enterprise-grade Azure data platforms.</p>
+
+  <div class="spec-grid">
+
+    <!-- LLMs -->
+    <div class="spec-card llm" tabindex="0">
+      <div class="spec-num">01</div>
+      <div class="spec-icon">🧠</div>
+      <h3>Large Language Models</h3>
+      <p>Building production LLM applications on Azure — from prompt engineering to fine-tuned deployments, Semantic Kernel orchestration, and responsible AI governance.</p>
+      <ul class="spec-bullets">
+        <li>Azure OpenAI Service — GPT-4o, GPT-4 Turbo deployments</li>
+        <li>Prompt engineering, evaluation &amp; prompt flow pipelines</li>
+        <li>Semantic Kernel &amp; LangChain orchestration</li>
+        <li>Fine-tuning workflows &amp; model evaluation</li>
+        <li>Responsible AI &amp; content filtering</li>
+        <li>Multi-agent system design</li>
+      </ul>
+      <div class="spec-tags">
+        <span class="spec-tag">Azure OpenAI</span>
+        <span class="spec-tag">GPT-4o</span>
+        <span class="spec-tag">Semantic Kernel</span>
+        <span class="spec-tag">LangChain</span>
+        <span class="spec-tag">Prompt Flow</span>
+      </div>
+    </div>
+
+    <!-- RAG -->
+    <div class="spec-card rag" tabindex="0">
+      <div class="spec-num">02</div>
+      <div class="spec-icon">🔍</div>
+      <h3>Retrieval-Augmented Generation</h3>
+      <p>Designing enterprise RAG pipelines that let your LLMs reason over internal data — documents, SQL databases, SharePoint, and APIs — with security and governance built in.</p>
+      <ul class="spec-bullets">
+        <li>Azure AI Search — hybrid &amp; vector search design</li>
+        <li>Document ingestion &amp; chunking strategies</li>
+        <li>Embedding pipeline with text-embedding-3 models</li>
+        <li>SQL-over-data &amp; structured data retrieval</li>
+        <li>RAG evaluation — relevance, faithfulness, latency</li>
+        <li>Secure access control &amp; data segregation</li>
+      </ul>
+      <div class="spec-tags">
+        <span class="spec-tag">Azure AI Search</span>
+        <span class="spec-tag">Vector Search</span>
+        <span class="spec-tag">Embeddings</span>
+        <span class="spec-tag">Hybrid Retrieval</span>
+        <span class="spec-tag">RAG Eval</span>
+      </div>
+    </div>
+
+    <!-- Data Platforms -->
+    <div class="spec-card platform" tabindex="0">
+      <div class="spec-num">03</div>
+      <div class="spec-icon">🏗️</div>
+      <h3>Azure Data Platforms</h3>
+      <p>Designing and delivering AI-ready data platforms on Azure — from Lakehouse architecture to real-time streaming, all optimized to feed your AI workloads with clean, governed data.</p>
+      <ul class="spec-bullets">
+        <li>Microsoft Fabric &amp; Synapse Analytics architecture</li>
+        <li>Medallion Lakehouse (Bronze → Silver → Gold)</li>
+        <li>Azure Data Factory &amp; Databricks pipelines</li>
+        <li>Delta Lake &amp; Unity Catalog governance</li>
+        <li>Real-time streaming — Event Hubs, Stream Analytics</li>
+        <li>Data modeling for AI &amp; ML feature stores</li>
+      </ul>
+      <div class="spec-tags">
+        <span class="spec-tag">Microsoft Fabric</span>
+        <span class="spec-tag">Synapse</span>
+        <span class="spec-tag">Databricks</span>
+        <span class="spec-tag">Delta Lake</span>
+        <span class="spec-tag">ADF</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-image-wrap">
+    <div class="about-photo-placeholder">
+      <div class="avatar-ring">👤</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:0 2rem;">Olusegun Oluyemi<br/><span style="color:var(--green-mint);font-size:0.78rem;">Senior Azure AI &amp; Data Engineer</span></p>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow green">About</div>
+    <h2 class="section-title">15+ Years Building Data &amp; AI Systems</h2>
+    <p class="section-sub">Over 15 years designing high-performance data platforms across telecom, finance, and enterprise — now focused on helping organizations harness Azure AI to build intelligent, scalable systems.</p>
+    <ul class="expertise-list">
+      <li><span class="tag amber">LLMs</span> Azure OpenAI — GPT-4o, Prompt Flow, Semantic Kernel</li>
+      <li><span class="tag amber">RAG</span> Retrieval pipelines with Azure AI Search &amp; vector stores</li>
+      <li><span class="tag">Azure</span> Data Engineering — ADF, Synapse, Fabric, Databricks</li>
+      <li><span class="tag">SQL</span> SQL Server DBA — performance tuning &amp; architecture</li>
+      <li><span class="tag">Arch</span> Medallion Lakehouse &amp; Delta Lake design</li>
+      <li><span class="tag">Cloud</span> Azure cloud migration &amp; modernization at scale</li>
+    </ul>
+    <div class="cert-strip">
+      <span class="cert-badge">DP-900 Azure Data Fundamentals</span>
+      <span class="cert-badge">AZ-900 Azure Fundamentals</span>
+      <span class="cert-badge">Microsoft Certified</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="section-eyebrow">Services</div>
+      <h2 class="section-title">What I Deliver</h2>
+    </div>
+    <a href="#contact" class="btn-secondary" style="margin-bottom:0.25rem;">Get a Quote →</a>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">🔍</div>
+      <h3>AI Readiness Assessment</h3>
+      <div class="service-price">$5,000 – $10,000 · 2–4 weeks</div>
+      <p>A comprehensive audit of your data infrastructure to identify AI opportunities and LLM/RAG readiness gaps.</p>
+      <ul class="service-features">
+        <li>Data infrastructure &amp; quality audit</li>
+        <li>LLM &amp; RAG opportunity identification</li>
+        <li>Gap analysis — pipelines, governance, vector readiness</li>
+        <li>AI adoption roadmap &amp; prioritized backlog</li>
+      </ul>
+    </div>
+
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">☁️</div>
+      <h3>AI Data Platform Build</h3>
+      <div class="service-price">$15,000 – $50,000+</div>
+      <p>End-to-end design and delivery of your Azure-native data platform — Lakehouse, pipelines, and AI-ready data layers.</p>
+      <ul class="service-features">
+        <li>Microsoft Fabric / Synapse Lakehouse design</li>
+        <li>Medallion architecture (Bronze → Silver → Gold)</li>
+        <li>ADF &amp; Databricks ETL/ELT pipelines</li>
+        <li>Feature store for ML &amp; AI workloads</li>
+      </ul>
+    </div>
+
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">🤖</div>
+      <h3>Enterprise RAG System</h3>
+      <div class="service-price">$20,000 – $60,000</div>
+      <p>Production-grade GPT-powered chat over your company's data — documents, databases, and APIs — with secure, governed access.</p>
+      <ul class="service-features">
+        <li>Azure OpenAI + Azure AI Search RAG pipeline</li>
+        <li>Hybrid vector + keyword retrieval</li>
+        <li>SQL Server, SharePoint &amp; API connectors</li>
+        <li>RAG evaluation, monitoring &amp; latency tuning</li>
+        <li>RBAC &amp; tenant-level data segregation</li>
+      </ul>
+    </div>
+
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">🧠</div>
+      <h3>LLM Integration &amp; Orchestration</h3>
+      <div class="service-price">$12,000 – $35,000</div>
+      <p>Build LLM-powered workflows into your existing systems using Semantic Kernel, LangChain, and Azure Prompt Flow.</p>
+      <ul class="service-features">
+        <li>Azure Prompt Flow pipeline design</li>
+        <li>Semantic Kernel / LangChain agent orchestration</li>
+        <li>Multi-agent systems &amp; tool-calling</li>
+        <li>Prompt engineering &amp; evaluation frameworks</li>
+      </ul>
+    </div>
+
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">📊</div>
+      <h3>AI-Powered Analytics &amp; BI</h3>
+      <div class="service-price">$10,000 – $30,000</div>
+      <p>Predictive analytics and AI-enhanced dashboards that turn data into executive decisions — including natural language querying.</p>
+      <ul class="service-features">
+        <li>Power BI with Azure OpenAI integration</li>
+        <li>Natural language data querying (Q&amp;A over data)</li>
+        <li>Predictive models deployed to Power BI</li>
+        <li>Executive &amp; operational dashboards</li>
+      </ul>
+    </div>
+
+    <div class="service-card" tabindex="0">
+      <div class="service-icon">🔄</div>
+      <h3>Ongoing AI &amp; Data Advisory</h3>
+      <div class="service-price">$3,000 – $15,000 / month</div>
+      <p>Fractional CTO-level support to evolve your data and AI capabilities continuously — without hiring full-time.</p>
+      <ul class="service-features">
+        <li>Architecture guidance &amp; design reviews</li>
+        <li>LLM &amp; RAG performance optimization</li>
+        <li>AI strategy &amp; vendor selection</li>
+        <li>Team mentoring &amp; capability uplift</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-eyebrow green">How I Work</div>
+  <h2 class="section-title">From Discovery to Production</h2>
+  <p class="section-sub">A structured engagement model designed to move fast, reduce risk, and deliver AI systems that your team can actually own.</p>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h4>Discovery &amp; Audit</h4>
+      <p>Deep dive into your data assets, existing infrastructure, and AI goals. We map what you have, what you need, and where the gaps are.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h4>Architecture Design</h4>
+      <p>I design a target architecture — data platform, RAG pipeline, or LLM workflow — tailored to your cloud environment and team capabilities.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h4>Build &amp; Iterate</h4>
+      <p>Agile delivery in sprints. Working software every two weeks. Continuous feedback loops so the solution evolves with your needs.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h4>Handoff &amp; Uplift</h4>
+      <p>Full documentation, team knowledge transfer, and optional ongoing advisory so your team can maintain, extend, and scale independently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="section-eyebrow">Case Studies</div>
+  <h2 class="section-title">Results That Speak</h2>
+  <p class="section-sub">Real-world outcomes across LLM deployment, RAG systems, data platform migration, and AI pipeline automation.</p>
+
+  <div class="case-grid">
+    <div class="case-card" tabindex="0">
+      <div class="case-card-img cloud">
+        <div class="case-icon">☁️</div>
+        <div class="img-overlay"></div>
+      </div>
+      <div class="case-card-body">
+        <span class="case-tag azure">Azure Migration</span>
+        <h3>Azure Data Migration at Scale</h3>
+        <p>Migrated 50+ production environments and 500+ databases to Azure, improving performance and dramatically reducing operational costs for a global enterprise.</p>
+        <span class="case-metric">50+</span><span class="case-metric-label">environments migrated</span>
+      </div>
+    </div>
+
+    <div class="case-card" tabindex="0">
+      <div class="case-card-img rag">
+        <div class="case-icon">💬</div>
+        <div class="img-overlay"></div>
+      </div>
+      <div class="case-card-body">
+        <span class="case-tag ai">RAG System</span>
+        <h3>Enterprise RAG Chatbot on Azure OpenAI</h3>
+        <p>Built a GPT-4-powered RAG system over SQL Server and SharePoint repositories. Employees query internal policies, contracts, and operational data in natural language.</p>
+        <span class="case-metric">&lt;2s</span><span class="case-metric-label">avg query latency</span>
+      </div>
+    </div>
+
+    <div class="case-card" tabindex="0">
+      <div class="case-card-img pipe">
+        <div class="case-icon">⚙️</div>
+        <div class="img-overlay"></div>
+      </div>
+      <div class="case-card-body">
+        <span class="case-tag data">Pipeline Automation</span>
+        <h3>Data Pipeline Automation — ADF &amp; Databricks</h3>
+        <p>Built 50+ ADF pipelines with Databricks transformation layers, reducing manual data processing by 80% and enabling near real-time reporting across business units.</p>
+        <span class="case-metric">80%</span><span class="case-metric-label">reduction in manual processing</span>
+      </div>
+    </div>
+
+    <div class="case-card" tabindex="0">
+      <div class="case-card-img fabric">
+        <div class="case-icon">🏭</div>
+        <div class="img-overlay"></div>
+      </div>
+      <div class="case-card-body">
+        <span class="case-tag ai">Microsoft Fabric</span>
+        <h3>Lakehouse Migration to Microsoft Fabric</h3>
+        <p>Migrated a legacy data warehouse to a Medallion Lakehouse on Microsoft Fabric, unifying analytics and AI workloads in a single governed platform.</p>
+        <span class="case-metric">60%</span><span class="case-metric-label">reduction in data infra cost</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech-stack">
+  <div class="section-eyebrow green">Technology</div>
+  <h2 class="section-title">The Stack I Work With</h2>
+  <p class="section-sub" style="margin-bottom:3rem;">Deep, production experience — not just familiarity — with the tools that matter for Azure AI and data engineering.</p>
+
+  <div class="tech-category">
+    <div class="tech-category-label">LLMs &amp; Generative AI</div>
+    <div class="tech-grid">
+      <div class="tech-pill amber"><span class="tech-icon">🤖</span>Azure OpenAI</div>
+      <div class="tech-pill amber"><span class="tech-icon">✨</span>GPT-4o / GPT-4 Turbo</div>
+      <div class="tech-pill amber"><span class="tech-icon">🔗</span>LangChain</div>
+      <div class="tech-pill amber"><span class="tech-icon">🎯</span>Semantic Kernel</div>
+      <div class="tech-pill amber"><span class="tech-icon">🌊</span>Azure Prompt Flow</div>
+      <div class="tech-pill amber"><span class="tech-icon">🧩</span>Azure AI Studio</div>
+      <div class="tech-pill amber"><span class="tech-icon">⚖️</span>Responsible AI</div>
+    </div>
+  </div>
+
+  <div class="tech-category">
+    <div class="tech-category-label">RAG &amp; Vector Search</div>
+    <div class="tech-grid">
+      <div class="tech-pill blue"><span class="tech-icon">🔍</span>Azure AI Search</div>
+      <div class="tech-pill blue"><span class="tech-icon">📐</span>Vector + Hybrid Retrieval</div>
+      <div class="tech-pill blue"><span class="tech-icon">🧮</span>text-embedding-3 Models</div>
+      <div class="tech-pill blue"><span class="tech-icon">🗃️</span>Chroma / FAISS</div>
+      <div class="tech-pill blue"><span class="tech-icon">📄</span>Document Intelligence</div>
+      <div class="tech-pill blue"><span class="tech-icon">🗂️</span>SharePoint Connector</div>
+    </div>
+  </div>
+
+  <div class="tech-category">
+    <div class="tech-category-label">Data Platforms &amp; Engineering</div>
+    <div class="tech-grid">
+      <div class="tech-pill"><span class="tech-icon">🏭</span>Microsoft Fabric</div>
+      <div class="tech-pill"><span class="tech-icon">⚡</span>Synapse Analytics</div>
+      <div class="tech-pill"><span class="tech-icon">🔥</span>Databricks</div>
+      <div class="tech-pill"><span class="tech-icon">🏗️</span>Azure Data Factory</div>
+      <div class="tech-pill"><span class="tech-icon">🌊</span>Delta Lake</div>
+      <div class="tech-pill"><span class="tech-icon">🗄️</span>SQL Server</div>
+      <div class="tech-pill"><span class="tech-icon">🐘</span>PostgreSQL</div>
+      <div class="tech-pill"><span class="tech-icon">🌐</span>Event Hubs</div>
+      <div class="tech-pill"><span class="tech-icon">📡</span>Stream Analytics</div>
+    </div>
+  </div>
+
+  <div class="tech-category">
+    <div class="tech-category-label">Languages, BI &amp; DevOps</div>
+    <div class="tech-grid">
+      <div class="tech-pill"><span class="tech-icon">🐍</span>Python</div>
+      <div class="tech-pill"><span class="tech-icon">✨</span>PySpark</div>
+      <div class="tech-pill"><span class="tech-icon">📊</span>Power BI</div>
+      <div class="tech-pill"><span class="tech-icon">🚀</span>Azure DevOps</div>
+      <div class="tech-pill"><span class="tech-icon">🏗️</span>Terraform</div>
+      <div class="tech-pill"><span class="tech-icon">🐋</span>Docker</div>
+      <div class="tech-pill"><span class="tech-icon">☸️</span>Azure Kubernetes</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="glow-blob" style="width:700px;height:700px;background:radial-gradient(circle,rgba(1,104,57,0.08),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="contact-card">
+    <div class="availability-badge">
+      <div class="avail-dot"></div>
+      Available for new engagements — Q2 2026
+    </div>
+    <div class="section-eyebrow" style="text-align:center;">Let's Talk</div>
+    <h2>Let's Build Your AI Future</h2>
+    <p>Ready to ship a production RAG system, modernize your data platform, or integrate LLMs into your workflows? Book a free 30-minute strategy call.</p>
+    <div class="contact-info">
+      <a href="mailto:your@email.com">✉️ your@email.com</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">💼 linkedin.com/in/yourprofile</a>
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:your@email.com" class="btn-amber">Book a Free 30-Min Strategy Call</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <img src="brand_assets/firstdatalogo.png" alt="FirstDATA Consulting LLC" />
+  <p>© 2026 FirstDATA Consulting LLC. All rights reserved.</p>
+  <p style="font-size:0.75rem;color:var(--text-muted);">Azure AI · LLMs · RAG · Data Engineering</p>
+</footer>
+
+</body>
+</html>
