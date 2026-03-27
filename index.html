@@ -667,19 +667,19 @@
 <div id="stats">
   <div class="stats-grid">
     <div class="stat-cell">
-      <div class="stat-num">15+</div>
+      <div class="stat-num" data-count="15" data-suffix="+">0+</div>
       <div class="stat-label">Years of Experience</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num">500+</div>
+      <div class="stat-num" data-count="500" data-suffix="+">0+</div>
       <div class="stat-label">Databases Migrated</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num amber">80%</div>
+      <div class="stat-num amber" data-count="80" data-suffix="%">0%</div>
       <div class="stat-label">Reduction in Manual Processing</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num">50+</div>
+      <div class="stat-num" data-count="50" data-suffix="+">0+</div>
       <div class="stat-label">ADF Pipelines Delivered</div>
     </div>
   </div>
@@ -1065,6 +1065,45 @@
   <p>© 2026 FirstDATA Consulting LLC. All rights reserved.</p>
   <p style="font-size:0.75rem;color:var(--text-muted);">Azure AI · LLMs · RAG · Data Engineering</p>
 </footer>
+
+
+<script>
+(function () {
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800; // ms
+    const start = performance.now();
+
+    function easeOutQuart(t) {
+      return 1 - Math.pow(1 - t, 4);
+    }
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.round(easeOutQuart(progress) * target);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const counters = document.querySelectorAll('[data-count]');
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  counters.forEach(function (el) { observer.observe(el); });
+})();
+</script>
 
 </body>
 </html>
