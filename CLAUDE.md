@@ -1,4 +1,71 @@
-# CLAUDE.md — Frontend Website Rules
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a **single-page marketing website** for FirstDATA — a digital growth agency offering AI Automation, Social Media Presence, and Website Design services. The entire site lives in one file (`index.html`) with all CSS written inline inside `<style>` tags. There is no build step, no package.json, and no framework.
+
+## Commands
+
+```bash
+# Start the local dev server (port 3000) — run before any screenshot work
+node serve.mjs
+
+# Take a viewport screenshot of the live site
+node screenshot.mjs http://localhost:3000
+
+# Screenshot with a label (saves as screenshot-N-label.png)
+node screenshot.mjs http://localhost:3000 hero
+
+# Screenshot a specific section via anchor
+node screenshot.mjs http://localhost:3000/#services services
+```
+
+Screenshots auto-increment (`screenshot-1.png`, `screenshot-2.png`, …) and are never overwritten. They save to `./temporary screenshots/`.
+
+## Architecture
+
+**Single file:** `index.html` — all HTML, CSS, and JS in one document. All styles are in a `<style>` block in `<head>`; there are no external stylesheets.
+
+**Page sections (in order), each with a matching `id`:**
+
+| ID | Content |
+|---|---|
+| `#hero` | Full-viewport hero with animated graphic and floating status cards |
+| `#stats` | 4-cell stat strip with JS count-up animation |
+| `#specializations` | 3 deep-dive cards for each service pillar |
+| `#about` | Two-column about section with expertise list |
+| `#services` | 3-column service card grid |
+| `#process` | 4-step process timeline |
+| `#case-studies` | 4 result cards with metrics |
+| `#tech-stack` | Tool pills grouped by category |
+| `#contact` | Centered contact card |
+
+**CSS design token system** — all colours, surfaces, and borders are defined as CSS custom properties on `:root` and must be used instead of hard-coded values:
+
+```
+--green-deep / --green-mid / --green-bright / --green-mint / --green-glow
+--amber / --amber-light
+--blue-status / --teal-status
+--bg-base → --bg-surface → --bg-elevated → --bg-float   (surface layering, dark → light)
+--border / --border-light
+--text-primary / --text-muted / --text-dim
+```
+
+**Typography:** `'Syne'` (headings, `letter-spacing: -0.03em`) + `'Inter'` (body, `line-height: 1.7`) — both loaded from Google Fonts.
+
+**Spec card colour theming:** The three `.spec-card` variants (`.llm` = amber, `.rag` = blue, `.platform` = green) use their own colour-scoped CSS rules for icons, bullets, tags, and top-border gradients. Match this pattern when adding new spec cards.
+
+**Count-up animation:** Stats in `#stats` use `data-count` and `data-suffix` attributes. The inline `<script>` at the bottom of `<body>` drives an `IntersectionObserver`-triggered easing animation.
+
+## Brand Assets
+
+Located in `brand_assets/`:
+- `firstdatalogo.png` — primary logo (used in nav and footer)
+- `ColorPalete.png` — visual reference for the brand palette
+
+Primary: `#016839` · Secondary: `#D6FCEA` · Accent: `#FAA61A`
 
 ## Always Do First
 - **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
@@ -29,11 +96,6 @@
 - Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
 - Mobile-first responsive
-
-## Brand Assets
-- Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
-- If assets exist there, use them. Do not use placeholders where real assets are available.
-- If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
 
 ## Anti-Generic Guardrails
 - **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Pick a custom brand color and derive from it.

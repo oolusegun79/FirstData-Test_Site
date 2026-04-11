@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FirstDATA Consulting LLC — Azure AI & Data Engineering</title>
+  <title>FirstDATA — AI Automation, Social Media & Website Design Agency</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -336,12 +336,15 @@
     #services { background: var(--bg-surface); }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5px;
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
       margin-top: 3.5rem;
+    }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
     }
     .service-card {
       background: var(--bg-surface);
@@ -619,10 +622,10 @@
   </div>
   <div class="nav-links">
     <a href="#hero">Home</a>
-    <a href="#specializations">Expertise</a>
+    <a href="#specializations">Our Approach</a>
     <a href="#services">Services</a>
-    <a href="#case-studies">Case Studies</a>
-    <a href="#tech-stack">Tech Stack</a>
+    <a href="#case-studies">Results</a>
+    <a href="#tech-stack">Tools</a>
     <a href="#contact">Contact</a>
   </div>
   <a href="#contact" class="nav-cta">Book Consultation</a>
@@ -634,20 +637,20 @@
   <div class="glow-blob" style="width:350px;height:350px;background:radial-gradient(circle,rgba(250,166,26,0.06),transparent 70%);bottom:0;left:10%;"></div>
 
   <div class="hero-content">
-    <div class="eyebrow">Azure AI &amp; Data Engineering Consultant</div>
-    <h1>LLMs, RAG &amp; <span class="accent-green">Data Platforms</span> That <span class="accent-amber">Actually Work</span></h1>
-    <p>I help organizations design, build, and scale AI-powered data platforms — from enterprise RAG systems to production LLM integrations on Azure.</p>
+    <div class="eyebrow">Digital Growth Agency</div>
+    <h1>Automate. Amplify. <span class="accent-green">Dominate Online.</span> Growth That <span class="accent-amber">Actually Sticks.</span></h1>
+    <p>We help businesses grow faster with AI-powered automation, magnetic social media presence, and high-converting website design — all under one roof.</p>
     <div class="hero-badges">
-      <span class="hero-badge">Azure OpenAI</span>
-      <span class="hero-badge">RAG Architecture</span>
-      <span class="hero-badge">Microsoft Fabric</span>
-      <span class="hero-badge">Databricks</span>
-      <span class="hero-badge">LangChain · Semantic Kernel</span>
-      <span class="hero-badge">Vector Search</span>
+      <span class="hero-badge">AI Automation</span>
+      <span class="hero-badge">Social Media Growth</span>
+      <span class="hero-badge">Website Design</span>
+      <span class="hero-badge">Lead Generation</span>
+      <span class="hero-badge">Content Strategy</span>
+      <span class="hero-badge">Conversion Optimisation</span>
     </div>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="#contact" class="btn-primary">Book Free Consultation</a>
-      <a href="#specializations" class="btn-secondary">See My Expertise</a>
+      <a href="#contact" class="btn-primary">Get a Free Strategy Call</a>
+      <a href="#services" class="btn-secondary">See Our Services</a>
     </div>
   </div>
 
@@ -658,107 +661,107 @@
     <div class="hex-core"></div>
   </div>
 
-  <div class="float-card float-card-1"><span class="dot"></span>Azure OpenAI · Live</div>
-  <div class="float-card float-card-2"><span class="dot-amber"></span>RAG Pipeline · Running</div>
-  <div class="float-card float-card-3"><span class="dot"></span>LLM Queries: 50K+/day</div>
+  <div class="float-card float-card-1"><span class="dot"></span>AI Workflow · Active</div>
+  <div class="float-card float-card-2"><span class="dot-amber"></span>Social Reach · Growing</div>
+  <div class="float-card float-card-3"><span class="dot"></span>New Leads: 24/7</div>
 </section>
 
 <!-- STATS -->
 <div id="stats">
   <div class="stats-grid">
     <div class="stat-cell">
-      <div class="stat-num" data-count="15" data-suffix="+">0+</div>
-      <div class="stat-label">Years of Experience</div>
+      <div class="stat-num" data-count="150" data-suffix="+">0+</div>
+      <div class="stat-label">Projects Delivered</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-num" data-count="500" data-suffix="+">0+</div>
-      <div class="stat-label">Databases Migrated</div>
+      <div class="stat-num" data-count="3" data-suffix="×">0×</div>
+      <div class="stat-label">Average Traffic Growth</div>
     </div>
     <div class="stat-cell">
       <div class="stat-num amber" data-count="80" data-suffix="%">0%</div>
-      <div class="stat-label">Reduction in Manual Processing</div>
+      <div class="stat-label">Reduction in Repetitive Tasks</div>
     </div>
     <div class="stat-cell">
       <div class="stat-num" data-count="50" data-suffix="+">0+</div>
-      <div class="stat-label">ADF Pipelines Delivered</div>
+      <div class="stat-label">Automations Built</div>
     </div>
   </div>
 </div>
 
 <!-- SPECIALIZATIONS -->
 <section id="specializations">
-  <div class="section-eyebrow">Core Expertise</div>
-  <h2 class="section-title">Three Pillars of My Practice</h2>
-  <p class="section-sub">Deep, end-to-end capability across LLMs, Retrieval-Augmented Generation, and enterprise-grade Azure data platforms.</p>
+  <div class="section-eyebrow">Our Approach</div>
+  <h2 class="section-title">Three Services, One Growth Engine.</h2>
+  <p class="section-sub">We combine intelligent automation, social media mastery, and world-class web design to give your business a compounding edge over the competition.</p>
 
   <div class="spec-grid">
 
-    <!-- LLMs -->
+    <!-- AI Automation -->
     <div class="spec-card llm" tabindex="0">
       <div class="spec-num">01</div>
-      <div class="spec-icon">🧠</div>
-      <h3>Large Language Models</h3>
-      <p>Building production LLM applications on Azure — from prompt engineering to fine-tuned deployments, Semantic Kernel orchestration, and responsible AI governance.</p>
+      <div class="spec-icon">🤖</div>
+      <h3>AI-Powered Automation</h3>
+      <p>We design intelligent workflows that replace repetitive tasks with precision automation — saving your team hours every week and eliminating costly human error.</p>
       <ul class="spec-bullets">
-        <li>Azure OpenAI Service — GPT-4o, GPT-4 Turbo deployments</li>
-        <li>Prompt engineering, evaluation &amp; prompt flow pipelines</li>
-        <li>Semantic Kernel &amp; LangChain orchestration</li>
-        <li>Fine-tuning workflows &amp; model evaluation</li>
-        <li>Responsible AI &amp; content filtering</li>
-        <li>Multi-agent system design</li>
+        <li>Lead nurturing &amp; follow-up automation</li>
+        <li>Invoice &amp; document processing pipelines</li>
+        <li>CRM &amp; email workflow automation</li>
+        <li>AI chatbots &amp; virtual assistants</li>
+        <li>Data extraction &amp; reporting automation</li>
+        <li>Multi-system integration &amp; orchestration</li>
       </ul>
       <div class="spec-tags">
-        <span class="spec-tag">Azure OpenAI</span>
-        <span class="spec-tag">GPT-4o</span>
-        <span class="spec-tag">Semantic Kernel</span>
-        <span class="spec-tag">LangChain</span>
-        <span class="spec-tag">Prompt Flow</span>
+        <span class="spec-tag">Make</span>
+        <span class="spec-tag">Zapier</span>
+        <span class="spec-tag">n8n</span>
+        <span class="spec-tag">OpenAI</span>
+        <span class="spec-tag">Python</span>
       </div>
     </div>
 
-    <!-- RAG -->
+    <!-- Social Media -->
     <div class="spec-card rag" tabindex="0">
       <div class="spec-num">02</div>
-      <div class="spec-icon">🔍</div>
-      <h3>Retrieval-Augmented Generation</h3>
-      <p>Designing enterprise RAG pipelines that let your LLMs reason over internal data — documents, SQL databases, SharePoint, and APIs — with security and governance built in.</p>
+      <div class="spec-icon">📲</div>
+      <h3>Social Media Growth</h3>
+      <p>We craft platform-native strategies that turn your social channels into reliable customer acquisition machines — building audiences that engage, trust, and buy.</p>
       <ul class="spec-bullets">
-        <li>Azure AI Search — hybrid &amp; vector search design</li>
-        <li>Document ingestion &amp; chunking strategies</li>
-        <li>Embedding pipeline with text-embedding-3 models</li>
-        <li>SQL-over-data &amp; structured data retrieval</li>
-        <li>RAG evaluation — relevance, faithfulness, latency</li>
-        <li>Secure access control &amp; data segregation</li>
+        <li>Content strategy &amp; monthly editorial calendar</li>
+        <li>Platform-specific creative direction &amp; copy</li>
+        <li>Community management &amp; DM automation</li>
+        <li>Paid social ad strategy, creative &amp; optimisation</li>
+        <li>Analytics &amp; monthly performance reporting</li>
+        <li>Influencer &amp; brand partnership strategy</li>
       </ul>
       <div class="spec-tags">
-        <span class="spec-tag">Azure AI Search</span>
-        <span class="spec-tag">Vector Search</span>
-        <span class="spec-tag">Embeddings</span>
-        <span class="spec-tag">Hybrid Retrieval</span>
-        <span class="spec-tag">RAG Eval</span>
+        <span class="spec-tag">Instagram</span>
+        <span class="spec-tag">LinkedIn</span>
+        <span class="spec-tag">TikTok</span>
+        <span class="spec-tag">Meta Ads</span>
+        <span class="spec-tag">Analytics</span>
       </div>
     </div>
 
-    <!-- Data Platforms -->
+    <!-- Website Design -->
     <div class="spec-card platform" tabindex="0">
       <div class="spec-num">03</div>
-      <div class="spec-icon">🏗️</div>
-      <h3>Azure Data Platforms</h3>
-      <p>Designing and delivering AI-ready data platforms on Azure — from Lakehouse architecture to real-time streaming, all optimized to feed your AI workloads with clean, governed data.</p>
+      <div class="spec-icon">🌐</div>
+      <h3>Conversion-Ready Websites</h3>
+      <p>We build fast, SEO-optimised websites that do more than look good — they capture leads, rank on Google, and turn first-time visitors into loyal customers.</p>
       <ul class="spec-bullets">
-        <li>Microsoft Fabric &amp; Synapse Analytics architecture</li>
-        <li>Medallion Lakehouse (Bronze → Silver → Gold)</li>
-        <li>Azure Data Factory &amp; Databricks pipelines</li>
-        <li>Delta Lake &amp; Unity Catalog governance</li>
-        <li>Real-time streaming — Event Hubs, Stream Analytics</li>
-        <li>Data modeling for AI &amp; ML feature stores</li>
+        <li>Custom UI/UX design &amp; full development</li>
+        <li>On-page SEO &amp; technical optimisation</li>
+        <li>CRO — A/B testing &amp; heatmap analysis</li>
+        <li>Mobile-first, sub-2s page load performance</li>
+        <li>Lead capture forms &amp; CRM integration</li>
+        <li>Ongoing support &amp; iterative improvements</li>
       </ul>
       <div class="spec-tags">
-        <span class="spec-tag">Microsoft Fabric</span>
-        <span class="spec-tag">Synapse</span>
-        <span class="spec-tag">Databricks</span>
-        <span class="spec-tag">Delta Lake</span>
-        <span class="spec-tag">ADF</span>
+        <span class="spec-tag">Next.js</span>
+        <span class="spec-tag">Webflow</span>
+        <span class="spec-tag">WordPress</span>
+        <span class="spec-tag">Figma</span>
+        <span class="spec-tag">SEO</span>
       </div>
     </div>
 
@@ -770,25 +773,25 @@
   <div class="about-image-wrap">
     <div class="about-photo-placeholder">
       <div class="avatar-ring">👤</div>
-      <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:0 2rem;">Olusegun Oluyemi<br/><span style="color:var(--green-mint);font-size:0.78rem;">Senior Azure AI &amp; Data Engineer</span></p>
+      <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:0 2rem;">FirstDATA Team<br/><span style="color:var(--green-mint);font-size:0.78rem;">Digital Growth Specialists</span></p>
     </div>
   </div>
   <div>
     <div class="section-eyebrow green">About</div>
-    <h2 class="section-title">15+ Years Building Data &amp; AI Systems</h2>
-    <p class="section-sub">Over 15 years designing high-performance data platforms across telecom, finance, and enterprise — now focused on helping organizations harness Azure AI to build intelligent, scalable systems.</p>
+    <h2 class="section-title">A Digital Growth Team Built for the Modern Business</h2>
+    <p class="section-sub">FirstDATA combines AI expertise, creative strategy, and technical execution to help businesses automate operations, build an audience online, and launch websites that generate real revenue.</p>
     <ul class="expertise-list">
-      <li><span class="tag amber">LLMs</span> Azure OpenAI — GPT-4o, Prompt Flow, Semantic Kernel</li>
-      <li><span class="tag amber">RAG</span> Retrieval pipelines with Azure AI Search &amp; vector stores</li>
-      <li><span class="tag">Azure</span> Data Engineering — ADF, Synapse, Fabric, Databricks</li>
-      <li><span class="tag">SQL</span> SQL Server DBA — performance tuning &amp; architecture</li>
-      <li><span class="tag">Arch</span> Medallion Lakehouse &amp; Delta Lake design</li>
-      <li><span class="tag">Cloud</span> Azure cloud migration &amp; modernization at scale</li>
+      <li><span class="tag amber">AI</span> Intelligent workflow design, automation &amp; deployment</li>
+      <li><span class="tag amber">Social</span> Platform strategy, content creation &amp; community growth</li>
+      <li><span class="tag">Web</span> Custom website design — UX, performance &amp; SEO</li>
+      <li><span class="tag">Ads</span> Paid social &amp; search — strategy, creative &amp; optimisation</li>
+      <li><span class="tag">Data</span> Analytics, tracking &amp; data-driven growth decisions</li>
+      <li><span class="tag">CX</span> Dedicated client success &amp; continuous improvement</li>
     </ul>
     <div class="cert-strip">
-      <span class="cert-badge">DP-900 Azure Data Fundamentals</span>
-      <span class="cert-badge">AZ-900 Azure Fundamentals</span>
-      <span class="cert-badge">Microsoft Certified</span>
+      <span class="cert-badge">Google Analytics Certified</span>
+      <span class="cert-badge">Meta Business Partner</span>
+      <span class="cert-badge">Webflow Expert</span>
     </div>
   </div>
 </section>
@@ -797,89 +800,53 @@
 <section id="services">
   <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
     <div>
-      <div class="section-eyebrow">Services</div>
-      <h2 class="section-title">What I Deliver</h2>
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Three Services. Infinite Growth.</h2>
+      <p class="section-sub" style="max-width:52ch;margin-top:0.75rem;">From intelligent automation to a commanding digital presence — we give your business the unfair advantage.</p>
     </div>
     <a href="#contact" class="btn-secondary" style="margin-bottom:0.25rem;">Get a Quote →</a>
   </div>
 
   <div class="services-grid">
     <div class="service-card" tabindex="0">
-      <div class="service-icon">🔍</div>
-      <h3>AI Readiness Assessment</h3>
-      <div class="service-price">$5,000 – $10,000 · 2–4 weeks</div>
-      <p>A comprehensive audit of your data infrastructure to identify AI opportunities and LLM/RAG readiness gaps.</p>
-      <ul class="service-features">
-        <li>Data infrastructure &amp; quality audit</li>
-        <li>LLM &amp; RAG opportunity identification</li>
-        <li>Gap analysis — pipelines, governance, vector readiness</li>
-        <li>AI adoption roadmap &amp; prioritized backlog</li>
-      </ul>
-    </div>
-
-    <div class="service-card" tabindex="0">
-      <div class="service-icon">☁️</div>
-      <h3>AI Data Platform Build</h3>
-      <div class="service-price">$15,000 – $50,000+</div>
-      <p>End-to-end design and delivery of your Azure-native data platform — Lakehouse, pipelines, and AI-ready data layers.</p>
-      <ul class="service-features">
-        <li>Microsoft Fabric / Synapse Lakehouse design</li>
-        <li>Medallion architecture (Bronze → Silver → Gold)</li>
-        <li>ADF &amp; Databricks ETL/ELT pipelines</li>
-        <li>Feature store for ML &amp; AI workloads</li>
-      </ul>
-    </div>
-
-    <div class="service-card" tabindex="0">
       <div class="service-icon">🤖</div>
-      <h3>Enterprise RAG System</h3>
-      <div class="service-price">$20,000 – $60,000</div>
-      <p>Production-grade GPT-powered chat over your company's data — documents, databases, and APIs — with secure, governed access.</p>
+      <h3>AI Automation</h3>
+      <div class="service-price">Work Smarter · Scale Faster</div>
+      <p>Stop losing hours to repetitive tasks. We build custom AI workflows that handle the work your team shouldn't have to — from lead follow-up and invoice processing to data extraction and internal reporting. Your team focuses on what matters; AI handles the rest.</p>
       <ul class="service-features">
-        <li>Azure OpenAI + Azure AI Search RAG pipeline</li>
-        <li>Hybrid vector + keyword retrieval</li>
-        <li>SQL Server, SharePoint &amp; API connectors</li>
-        <li>RAG evaluation, monitoring &amp; latency tuning</li>
-        <li>RBAC &amp; tenant-level data segregation</li>
+        <li>Custom AI workflow design &amp; deployment</li>
+        <li>CRM, email &amp; calendar automation</li>
+        <li>Document &amp; data extraction pipelines</li>
+        <li>AI-powered chatbots &amp; virtual assistants</li>
+        <li>Ongoing optimisation &amp; monitoring</li>
       </ul>
     </div>
 
     <div class="service-card" tabindex="0">
-      <div class="service-icon">🧠</div>
-      <h3>LLM Integration &amp; Orchestration</h3>
-      <div class="service-price">$12,000 – $35,000</div>
-      <p>Build LLM-powered workflows into your existing systems using Semantic Kernel, LangChain, and Azure Prompt Flow.</p>
+      <div class="service-icon">📲</div>
+      <h3>Social Media Presence</h3>
+      <div class="service-price">Be Seen · Be Remembered</div>
+      <p>Your next customer is already scrolling. We craft platform-native content strategies that build real audiences, drive engagement, and convert followers into paying clients — consistently, across every major channel.</p>
       <ul class="service-features">
-        <li>Azure Prompt Flow pipeline design</li>
-        <li>Semantic Kernel / LangChain agent orchestration</li>
-        <li>Multi-agent systems &amp; tool-calling</li>
-        <li>Prompt engineering &amp; evaluation frameworks</li>
+        <li>Multi-platform content strategy &amp; calendar</li>
+        <li>Scroll-stopping copy &amp; creative direction</li>
+        <li>Community management &amp; audience growth</li>
+        <li>Analytics reporting &amp; performance optimisation</li>
+        <li>Paid social campaign integration</li>
       </ul>
     </div>
 
     <div class="service-card" tabindex="0">
-      <div class="service-icon">📊</div>
-      <h3>AI-Powered Analytics &amp; BI</h3>
-      <div class="service-price">$10,000 – $30,000</div>
-      <p>Predictive analytics and AI-enhanced dashboards that turn data into executive decisions — including natural language querying.</p>
+      <div class="service-icon">🌐</div>
+      <h3>Website Design</h3>
+      <div class="service-price">First Impressions · Lasting Conversions</div>
+      <p>Your website is your hardest-working sales rep. We design fast, stunning, conversion-optimised websites that rank on Google, load in seconds, and turn visitors into leads — built to grow with your business.</p>
       <ul class="service-features">
-        <li>Power BI with Azure OpenAI integration</li>
-        <li>Natural language data querying (Q&amp;A over data)</li>
-        <li>Predictive models deployed to Power BI</li>
-        <li>Executive &amp; operational dashboards</li>
-      </ul>
-    </div>
-
-    <div class="service-card" tabindex="0">
-      <div class="service-icon">🔄</div>
-      <h3>Ongoing AI &amp; Data Advisory</h3>
-      <div class="service-price">$3,000 – $15,000 / month</div>
-      <p>Fractional CTO-level support to evolve your data and AI capabilities continuously — without hiring full-time.</p>
-      <ul class="service-features">
-        <li>Architecture guidance &amp; design reviews</li>
-        <li>LLM &amp; RAG performance optimization</li>
-        <li>AI strategy &amp; vendor selection</li>
-        <li>Team mentoring &amp; capability uplift</li>
+        <li>Custom design — no templates, no compromises</li>
+        <li>SEO-optimised structure &amp; on-page copy</li>
+        <li>Mobile-first, lightning-fast performance</li>
+        <li>Lead capture forms &amp; CRM integration</li>
+        <li>Ongoing support &amp; iterative improvements</li>
       </ul>
     </div>
   </div>
@@ -887,90 +854,90 @@
 
 <!-- PROCESS -->
 <section id="process">
-  <div class="section-eyebrow green">How I Work</div>
-  <h2 class="section-title">From Discovery to Production</h2>
-  <p class="section-sub">A structured engagement model designed to move fast, reduce risk, and deliver AI systems that your team can actually own.</p>
+  <div class="section-eyebrow green">How We Work</div>
+  <h2 class="section-title">From Onboarding to Results</h2>
+  <p class="section-sub">A streamlined process designed to launch fast, iterate smart, and deliver measurable growth for your business from day one.</p>
 
   <div class="process-steps">
     <div class="process-step">
       <div class="step-num">01</div>
-      <h4>Discovery &amp; Audit</h4>
-      <p>Deep dive into your data assets, existing infrastructure, and AI goals. We map what you have, what you need, and where the gaps are.</p>
+      <h4>Discovery Call</h4>
+      <p>We learn your business goals, current challenges, and biggest growth opportunities in a free 30-minute strategy session — no obligations.</p>
     </div>
     <div class="process-step">
       <div class="step-num">02</div>
-      <h4>Architecture Design</h4>
-      <p>I design a target architecture — data platform, RAG pipeline, or LLM workflow — tailored to your cloud environment and team capabilities.</p>
+      <h4>Custom Strategy</h4>
+      <p>We build a tailored growth plan across automation, social media, and web — clearly scoped to your budget, timeline, and target outcomes.</p>
     </div>
     <div class="process-step">
       <div class="step-num">03</div>
-      <h4>Build &amp; Iterate</h4>
-      <p>Agile delivery in sprints. Working software every two weeks. Continuous feedback loops so the solution evolves with your needs.</p>
+      <h4>Build &amp; Launch</h4>
+      <p>Our team executes at speed — automations go live, content ships on schedule, and your new website launches ready to convert from day one.</p>
     </div>
     <div class="process-step">
       <div class="step-num">04</div>
-      <h4>Handoff &amp; Uplift</h4>
-      <p>Full documentation, team knowledge transfer, and optional ongoing advisory so your team can maintain, extend, and scale independently.</p>
+      <h4>Optimise &amp; Scale</h4>
+      <p>We track what works, double down on what drives results, and continuously optimise every channel for compounding, long-term growth.</p>
     </div>
   </div>
 </section>
 
 <!-- CASE STUDIES -->
 <section id="case-studies">
-  <div class="section-eyebrow">Case Studies</div>
-  <h2 class="section-title">Results That Speak</h2>
-  <p class="section-sub">Real-world outcomes across LLM deployment, RAG systems, data platform migration, and AI pipeline automation.</p>
+  <div class="section-eyebrow">Results</div>
+  <h2 class="section-title">Real Growth. Real Numbers.</h2>
+  <p class="section-sub">A sample of what we've delivered for clients across AI automation, social media, and website design.</p>
 
   <div class="case-grid">
     <div class="case-card" tabindex="0">
       <div class="case-card-img cloud">
-        <div class="case-icon">☁️</div>
+        <div class="case-icon">🤖</div>
         <div class="img-overlay"></div>
       </div>
       <div class="case-card-body">
-        <span class="case-tag azure">Azure Migration</span>
-        <h3>Azure Data Migration at Scale</h3>
-        <p>Migrated 50+ production environments and 500+ databases to Azure, improving performance and dramatically reducing operational costs for a global enterprise.</p>
-        <span class="case-metric">50+</span><span class="case-metric-label">environments migrated</span>
+        <span class="case-tag ai">AI Automation</span>
+        <h3>60% Time Saved with AI Invoice Processing</h3>
+        <p>Built an AI workflow that automatically extracts, validates, and routes invoices — eliminating 3+ hours of manual work per day for a growing retail business.</p>
+        <span class="case-metric">60%</span><span class="case-metric-label">reduction in processing time</span>
       </div>
     </div>
 
     <div class="case-card" tabindex="0">
       <div class="case-card-img rag">
-        <div class="case-icon">💬</div>
+        <div class="case-icon">📲</div>
         <div class="img-overlay"></div>
       </div>
       <div class="case-card-body">
-        <span class="case-tag ai">RAG System</span>
-        <h3>Enterprise RAG Chatbot on Azure OpenAI</h3>
-        <p>Built a GPT-4-powered RAG system over SQL Server and SharePoint repositories. Employees query internal policies, contracts, and operational data in natural language.</p>
-        <span class="case-metric">&lt;2s</span><span class="case-metric-label">avg query latency</span>
+        <span class="case-tag azure">Social Media</span>
+        <h3>3× Follower Growth in 90 Days</h3>
+        <p>Developed a LinkedIn + Instagram content strategy for a B2B SaaS brand, growing their following from 1,200 to 4,800 and generating 40+ qualified leads per month.</p>
+        <span class="case-metric">3×</span><span class="case-metric-label">follower growth in 90 days</span>
       </div>
     </div>
 
     <div class="case-card" tabindex="0">
       <div class="case-card-img pipe">
-        <div class="case-icon">⚙️</div>
+        <div class="case-icon">🌐</div>
         <div class="img-overlay"></div>
       </div>
       <div class="case-card-body">
-        <span class="case-tag data">Pipeline Automation</span>
-        <h3>Data Pipeline Automation — ADF &amp; Databricks</h3>
-        <p>Built 50+ ADF pipelines with Databricks transformation layers, reducing manual data processing by 80% and enabling near real-time reporting across business units.</p>
-        <span class="case-metric">80%</span><span class="case-metric-label">reduction in manual processing</span>
+        <span class="case-tag data">Website Design</span>
+        <h3>Landing Page Converts at 12%</h3>
+        <p>Redesigned a lead capture page with UX best practices and SEO-optimised copy, lifting conversion rate from 2.3% to 12.4% and cutting bounce rate by 40%.</p>
+        <span class="case-metric">12%</span><span class="case-metric-label">conversion rate achieved</span>
       </div>
     </div>
 
     <div class="case-card" tabindex="0">
       <div class="case-card-img fabric">
-        <div class="case-icon">🏭</div>
+        <div class="case-icon">⚡</div>
         <div class="img-overlay"></div>
       </div>
       <div class="case-card-body">
-        <span class="case-tag ai">Microsoft Fabric</span>
-        <h3>Lakehouse Migration to Microsoft Fabric</h3>
-        <p>Migrated a legacy data warehouse to a Medallion Lakehouse on Microsoft Fabric, unifying analytics and AI workloads in a single governed platform.</p>
-        <span class="case-metric">60%</span><span class="case-metric-label">reduction in data infra cost</span>
+        <span class="case-tag ai">Automation + Social</span>
+        <h3>AI Social Posting Saves 15 Hours/Week</h3>
+        <p>Built an AI-powered content calendar and auto-scheduling system for a digital brand, freeing up 15 hours per week while maintaining consistent, high-quality posting.</p>
+        <span class="case-metric">15h</span><span class="case-metric-label">saved per week</span>
       </div>
     </div>
   </div>
@@ -978,60 +945,58 @@
 
 <!-- TECH STACK -->
 <section id="tech-stack">
-  <div class="section-eyebrow green">Technology</div>
-  <h2 class="section-title">The Stack I Work With</h2>
-  <p class="section-sub" style="margin-bottom:3rem;">Deep, production experience — not just familiarity — with the tools that matter for Azure AI and data engineering.</p>
+  <div class="section-eyebrow green">Tools We Use</div>
+  <h2 class="section-title">The Stack Behind Your Growth</h2>
+  <p class="section-sub" style="margin-bottom:3rem;">Best-in-class tools across automation, social media, web development, and analytics — deployed with precision for measurable results.</p>
 
   <div class="tech-category">
-    <div class="tech-category-label">LLMs &amp; Generative AI</div>
+    <div class="tech-category-label">AI &amp; Automation</div>
     <div class="tech-grid">
-      <div class="tech-pill amber"><span class="tech-icon">🤖</span>Azure OpenAI</div>
-      <div class="tech-pill amber"><span class="tech-icon">✨</span>GPT-4o / GPT-4 Turbo</div>
-      <div class="tech-pill amber"><span class="tech-icon">🔗</span>LangChain</div>
-      <div class="tech-pill amber"><span class="tech-icon">🎯</span>Semantic Kernel</div>
-      <div class="tech-pill amber"><span class="tech-icon">🌊</span>Azure Prompt Flow</div>
-      <div class="tech-pill amber"><span class="tech-icon">🧩</span>Azure AI Studio</div>
-      <div class="tech-pill amber"><span class="tech-icon">⚖️</span>Responsible AI</div>
+      <div class="tech-pill amber"><span class="tech-icon">⚡</span>Make (Integromat)</div>
+      <div class="tech-pill amber"><span class="tech-icon">🔗</span>Zapier</div>
+      <div class="tech-pill amber"><span class="tech-icon">🔀</span>n8n</div>
+      <div class="tech-pill amber"><span class="tech-icon">🤖</span>OpenAI API</div>
+      <div class="tech-pill amber"><span class="tech-icon">✨</span>Anthropic Claude</div>
+      <div class="tech-pill amber"><span class="tech-icon">🐍</span>Python</div>
+      <div class="tech-pill amber"><span class="tech-icon">🗂️</span>Airtable</div>
     </div>
   </div>
 
   <div class="tech-category">
-    <div class="tech-category-label">RAG &amp; Vector Search</div>
+    <div class="tech-category-label">Social Media &amp; Content</div>
     <div class="tech-grid">
-      <div class="tech-pill blue"><span class="tech-icon">🔍</span>Azure AI Search</div>
-      <div class="tech-pill blue"><span class="tech-icon">📐</span>Vector + Hybrid Retrieval</div>
-      <div class="tech-pill blue"><span class="tech-icon">🧮</span>text-embedding-3 Models</div>
-      <div class="tech-pill blue"><span class="tech-icon">🗃️</span>Chroma / FAISS</div>
-      <div class="tech-pill blue"><span class="tech-icon">📄</span>Document Intelligence</div>
-      <div class="tech-pill blue"><span class="tech-icon">🗂️</span>SharePoint Connector</div>
+      <div class="tech-pill blue"><span class="tech-icon">📸</span>Instagram</div>
+      <div class="tech-pill blue"><span class="tech-icon">💼</span>LinkedIn</div>
+      <div class="tech-pill blue"><span class="tech-icon">🎵</span>TikTok</div>
+      <div class="tech-pill blue"><span class="tech-icon">📘</span>Meta Ads Manager</div>
+      <div class="tech-pill blue"><span class="tech-icon">📅</span>Buffer</div>
+      <div class="tech-pill blue"><span class="tech-icon">🎨</span>Canva</div>
+      <div class="tech-pill blue"><span class="tech-icon">🎬</span>CapCut</div>
     </div>
   </div>
 
   <div class="tech-category">
-    <div class="tech-category-label">Data Platforms &amp; Engineering</div>
+    <div class="tech-category-label">Website &amp; Development</div>
     <div class="tech-grid">
-      <div class="tech-pill"><span class="tech-icon">🏭</span>Microsoft Fabric</div>
-      <div class="tech-pill"><span class="tech-icon">⚡</span>Synapse Analytics</div>
-      <div class="tech-pill"><span class="tech-icon">🔥</span>Databricks</div>
-      <div class="tech-pill"><span class="tech-icon">🏗️</span>Azure Data Factory</div>
-      <div class="tech-pill"><span class="tech-icon">🌊</span>Delta Lake</div>
-      <div class="tech-pill"><span class="tech-icon">🗄️</span>SQL Server</div>
-      <div class="tech-pill"><span class="tech-icon">🐘</span>PostgreSQL</div>
-      <div class="tech-pill"><span class="tech-icon">🌐</span>Event Hubs</div>
-      <div class="tech-pill"><span class="tech-icon">📡</span>Stream Analytics</div>
+      <div class="tech-pill"><span class="tech-icon">⚛️</span>React / Next.js</div>
+      <div class="tech-pill"><span class="tech-icon">🌊</span>Webflow</div>
+      <div class="tech-pill"><span class="tech-icon">🔵</span>WordPress</div>
+      <div class="tech-pill"><span class="tech-icon">🎨</span>Tailwind CSS</div>
+      <div class="tech-pill"><span class="tech-icon">✏️</span>Figma</div>
+      <div class="tech-pill"><span class="tech-icon">🖼️</span>Framer</div>
+      <div class="tech-pill"><span class="tech-icon">🚀</span>Vercel</div>
     </div>
   </div>
 
   <div class="tech-category">
-    <div class="tech-category-label">Languages, BI &amp; DevOps</div>
+    <div class="tech-category-label">Analytics &amp; Growth</div>
     <div class="tech-grid">
-      <div class="tech-pill"><span class="tech-icon">🐍</span>Python</div>
-      <div class="tech-pill"><span class="tech-icon">✨</span>PySpark</div>
-      <div class="tech-pill"><span class="tech-icon">📊</span>Power BI</div>
-      <div class="tech-pill"><span class="tech-icon">🚀</span>Azure DevOps</div>
-      <div class="tech-pill"><span class="tech-icon">🏗️</span>Terraform</div>
-      <div class="tech-pill"><span class="tech-icon">🐋</span>Docker</div>
-      <div class="tech-pill"><span class="tech-icon">☸️</span>Azure Kubernetes</div>
+      <div class="tech-pill"><span class="tech-icon">📊</span>Google Analytics 4</div>
+      <div class="tech-pill"><span class="tech-icon">🔥</span>Hotjar</div>
+      <div class="tech-pill"><span class="tech-icon">🔍</span>SEMrush</div>
+      <div class="tech-pill"><span class="tech-icon">📡</span>Meta Pixel</div>
+      <div class="tech-pill"><span class="tech-icon">🌐</span>Google Search Console</div>
+      <div class="tech-pill"><span class="tech-icon">🧲</span>HubSpot</div>
     </div>
   </div>
 </section>
@@ -1042,17 +1007,17 @@
   <div class="contact-card">
     <div class="availability-badge">
       <div class="avail-dot"></div>
-      Available for new engagements — Q2 2026
+      Accepting new clients — start today
     </div>
     <div class="section-eyebrow" style="text-align:center;">Let's Talk</div>
-    <h2>Let's Build Your AI Future</h2>
-    <p>Ready to ship a production RAG system, modernize your data platform, or integrate LLMs into your workflows? Book a free 30-minute strategy call.</p>
+    <h2>Let's Grow Your Business</h2>
+    <p>Ready to automate your operations, build a social media presence that converts, or launch a website that generates real leads? Let's talk — it's completely free.</p>
     <div class="contact-info">
       <a href="mailto:your@email.com">✉️ your@email.com</a>
       <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">💼 linkedin.com/in/yourprofile</a>
     </div>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="mailto:your@email.com" class="btn-amber">Book a Free 30-Min Strategy Call</a>
+      <a href="mailto:your@email.com" class="btn-amber">Book a Free Strategy Call</a>
       <a href="#services" class="btn-secondary">View Services</a>
     </div>
   </div>
@@ -1063,7 +1028,7 @@
 <footer>
   <img src="brand_assets/firstdatalogo.png" alt="FirstDATA Consulting LLC" />
   <p>© 2026 FirstDATA Consulting LLC. All rights reserved.</p>
-  <p style="font-size:0.75rem;color:var(--text-muted);">Azure AI · LLMs · RAG · Data Engineering</p>
+  <p style="font-size:0.75rem;color:var(--text-muted);">AI Automation · Social Media · Website Design</p>
 </footer>
 
 
