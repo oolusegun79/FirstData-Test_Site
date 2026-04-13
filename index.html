@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FirstDATA — AI Automation, Social Media & Website Design Agency</title>
+  <title>FirstDATA — AI Automation, Social Media & SQL Database / Data Engineering</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <style>
     :root {
       --green-deep:    #016839;
@@ -628,7 +630,7 @@
     <a href="#tech-stack">Tools</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="nav-cta">Book Consultation</a>
+  <a href="#" class="nav-cta" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oolusegun79/30min'});return false;">Book Consultation</a>
 </nav>
 
 <!-- HERO -->
@@ -639,14 +641,14 @@
   <div class="hero-content">
     <div class="eyebrow">Digital Growth Agency</div>
     <h1>Automate. Amplify. <span class="accent-green">Dominate Online.</span> Growth That <span class="accent-amber">Actually Sticks.</span></h1>
-    <p>We help businesses grow faster with AI-powered automation, magnetic social media presence, and high-converting website design — all under one roof.</p>
+    <p>We help businesses grow faster with AI-powered automation, magnetic social media presence, and enterprise-grade SQL databases & data engineering — all under one roof.</p>
     <div class="hero-badges">
       <span class="hero-badge">AI Automation</span>
       <span class="hero-badge">Social Media Growth</span>
-      <span class="hero-badge">Website Design</span>
-      <span class="hero-badge">Lead Generation</span>
+      <span class="hero-badge">SQL Databases</span>
+      <span class="hero-badge">Data Engineering</span>
       <span class="hero-badge">Content Strategy</span>
-      <span class="hero-badge">Conversion Optimisation</span>
+      <span class="hero-badge">ETL Pipelines</span>
     </div>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">
       <a href="#contact" class="btn-primary">Get a Free Strategy Call</a>
@@ -692,7 +694,7 @@
 <section id="specializations">
   <div class="section-eyebrow">Our Approach</div>
   <h2 class="section-title">Three Services, One Growth Engine.</h2>
-  <p class="section-sub">We combine intelligent automation, social media mastery, and world-class web design to give your business a compounding edge over the competition.</p>
+  <p class="section-sub">We combine intelligent automation, social media mastery, and enterprise-grade data engineering to give your business a compounding edge over the competition.</p>
 
   <div class="spec-grid">
 
@@ -742,26 +744,26 @@
       </div>
     </div>
 
-    <!-- Website Design -->
+    <!-- SQL / Data Engineering -->
     <div class="spec-card platform" tabindex="0">
       <div class="spec-num">03</div>
-      <div class="spec-icon">🌐</div>
-      <h3>Conversion-Ready Websites</h3>
-      <p>We build fast, SEO-optimised websites that do more than look good — they capture leads, rank on Google, and turn first-time visitors into loyal customers.</p>
+      <div class="spec-icon">🗄️</div>
+      <h3>SQL & Data Engineering</h3>
+      <p>We design and build robust, scalable data infrastructures — from clean SQL databases and ETL pipelines to analytics-ready data warehouses that power smarter business decisions.</p>
       <ul class="spec-bullets">
-        <li>Custom UI/UX design &amp; full development</li>
-        <li>On-page SEO &amp; technical optimisation</li>
-        <li>CRO — A/B testing &amp; heatmap analysis</li>
-        <li>Mobile-first, sub-2s page load performance</li>
-        <li>Lead capture forms &amp; CRM integration</li>
-        <li>Ongoing support &amp; iterative improvements</li>
+        <li>SQL database design, optimisation &amp; administration</li>
+        <li>ETL/ELT pipeline design &amp; automation</li>
+        <li>Data warehouse &amp; Lakehouse architecture</li>
+        <li>Data quality, governance &amp; lineage frameworks</li>
+        <li>Real-time streaming &amp; batch data processing</li>
+        <li>BI integration &amp; reporting layer build-out</li>
       </ul>
       <div class="spec-tags">
-        <span class="spec-tag">Next.js</span>
-        <span class="spec-tag">Webflow</span>
-        <span class="spec-tag">WordPress</span>
-        <span class="spec-tag">Figma</span>
-        <span class="spec-tag">SEO</span>
+        <span class="spec-tag">SQL Server</span>
+        <span class="spec-tag">PostgreSQL</span>
+        <span class="spec-tag">Databricks</span>
+        <span class="spec-tag">dbt</span>
+        <span class="spec-tag">Azure</span>
       </div>
     </div>
 
@@ -771,27 +773,26 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-image-wrap">
-    <div class="about-photo-placeholder">
-      <div class="avatar-ring">👤</div>
-      <p style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:0 2rem;">FirstDATA Team<br/><span style="color:var(--green-mint);font-size:0.78rem;">Digital Growth Specialists</span></p>
+    <div class="about-photo-placeholder" style="padding:0;overflow:hidden;">
+      <img src="brand_assets/OluOlu1.jpeg" alt="Olusegun Oluyemi — FirstDATA" style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:16px;" />
     </div>
   </div>
   <div>
     <div class="section-eyebrow green">About</div>
     <h2 class="section-title">A Digital Growth Team Built for the Modern Business</h2>
-    <p class="section-sub">FirstDATA combines AI expertise, creative strategy, and technical execution to help businesses automate operations, build an audience online, and launch websites that generate real revenue.</p>
+    <p class="section-sub">FirstDATA combines AI expertise, creative strategy, and deep data engineering capability to help businesses automate operations, build an audience online, and turn raw data into a competitive advantage.</p>
     <ul class="expertise-list">
       <li><span class="tag amber">AI</span> Intelligent workflow design, automation &amp; deployment</li>
       <li><span class="tag amber">Social</span> Platform strategy, content creation &amp; community growth</li>
-      <li><span class="tag">Web</span> Custom website design — UX, performance &amp; SEO</li>
-      <li><span class="tag">Ads</span> Paid social &amp; search — strategy, creative &amp; optimisation</li>
-      <li><span class="tag">Data</span> Analytics, tracking &amp; data-driven growth decisions</li>
+      <li><span class="tag">SQL</span> Database design, performance tuning &amp; administration</li>
+      <li><span class="tag">ETL</span> Pipeline engineering — batch, streaming &amp; real-time</li>
+      <li><span class="tag">Data</span> Warehousing, Lakehouse architecture &amp; BI integration</li>
       <li><span class="tag">CX</span> Dedicated client success &amp; continuous improvement</li>
     </ul>
     <div class="cert-strip">
       <span class="cert-badge">Google Analytics Certified</span>
       <span class="cert-badge">Meta Business Partner</span>
-      <span class="cert-badge">Webflow Expert</span>
+      <span class="cert-badge">Microsoft Data Certified</span>
     </div>
   </div>
 </section>
@@ -802,7 +803,7 @@
     <div>
       <div class="section-eyebrow">What We Do</div>
       <h2 class="section-title">Three Services. Infinite Growth.</h2>
-      <p class="section-sub" style="max-width:52ch;margin-top:0.75rem;">From intelligent automation to a commanding digital presence — we give your business the unfair advantage.</p>
+      <p class="section-sub" style="max-width:52ch;margin-top:0.75rem;">From intelligent automation and commanding social presence to battle-tested data infrastructure — we give your business the unfair advantage.</p>
     </div>
     <a href="#contact" class="btn-secondary" style="margin-bottom:0.25rem;">Get a Quote →</a>
   </div>
@@ -837,16 +838,16 @@
     </div>
 
     <div class="service-card" tabindex="0">
-      <div class="service-icon">🌐</div>
-      <h3>Website Design</h3>
-      <div class="service-price">First Impressions · Lasting Conversions</div>
-      <p>Your website is your hardest-working sales rep. We design fast, stunning, conversion-optimised websites that rank on Google, load in seconds, and turn visitors into leads — built to grow with your business.</p>
+      <div class="service-icon">🗄️</div>
+      <h3>SQL Database / Data Engineering</h3>
+      <div class="service-price">Clean Data · Confident Decisions</div>
+      <p>Bad data costs businesses millions. We design and build rock-solid SQL databases, ETL pipelines, and data warehouses that give your team a single source of truth — structured, governed, and ready to scale.</p>
       <ul class="service-features">
-        <li>Custom design — no templates, no compromises</li>
-        <li>SEO-optimised structure &amp; on-page copy</li>
-        <li>Mobile-first, lightning-fast performance</li>
-        <li>Lead capture forms &amp; CRM integration</li>
-        <li>Ongoing support &amp; iterative improvements</li>
+        <li>SQL database design, build &amp; optimisation</li>
+        <li>ETL/ELT pipeline engineering &amp; automation</li>
+        <li>Data warehouse &amp; Lakehouse architecture</li>
+        <li>Data quality, governance &amp; lineage tracking</li>
+        <li>BI-ready reporting layers &amp; dashboard integration</li>
       </ul>
     </div>
   </div>
@@ -867,12 +868,12 @@
     <div class="process-step">
       <div class="step-num">02</div>
       <h4>Custom Strategy</h4>
-      <p>We build a tailored growth plan across automation, social media, and web — clearly scoped to your budget, timeline, and target outcomes.</p>
+      <p>We build a tailored plan across automation, social media, and data engineering — clearly scoped to your budget, timeline, and target outcomes.</p>
     </div>
     <div class="process-step">
       <div class="step-num">03</div>
       <h4>Build &amp; Launch</h4>
-      <p>Our team executes at speed — automations go live, content ships on schedule, and your new website launches ready to convert from day one.</p>
+      <p>Our team executes at speed — automations go live, content ships on schedule, and your data pipelines and database architecture are delivered production-ready.</p>
     </div>
     <div class="process-step">
       <div class="step-num">04</div>
@@ -886,7 +887,7 @@
 <section id="case-studies">
   <div class="section-eyebrow">Results</div>
   <h2 class="section-title">Real Growth. Real Numbers.</h2>
-  <p class="section-sub">A sample of what we've delivered for clients across AI automation, social media, and website design.</p>
+  <p class="section-sub">A sample of what we've delivered for clients across AI automation, social media, and SQL database & data engineering.</p>
 
   <div class="case-grid">
     <div class="case-card" tabindex="0">
@@ -917,14 +918,14 @@
 
     <div class="case-card" tabindex="0">
       <div class="case-card-img pipe">
-        <div class="case-icon">🌐</div>
+        <div class="case-icon">🗄️</div>
         <div class="img-overlay"></div>
       </div>
       <div class="case-card-body">
-        <span class="case-tag data">Website Design</span>
-        <h3>Landing Page Converts at 12%</h3>
-        <p>Redesigned a lead capture page with UX best practices and SEO-optimised copy, lifting conversion rate from 2.3% to 12.4% and cutting bounce rate by 40%.</p>
-        <span class="case-metric">12%</span><span class="case-metric-label">conversion rate achieved</span>
+        <span class="case-tag data">Data Engineering</span>
+        <h3>10× Faster Reporting with Data Warehouse Rebuild</h3>
+        <p>Redesigned a fragmented SQL Server environment into a clean Medallion Lakehouse, cutting report generation time from 4 hours to under 25 minutes for a mid-size logistics firm.</p>
+        <span class="case-metric">10×</span><span class="case-metric-label">faster report generation</span>
       </div>
     </div>
 
@@ -947,7 +948,7 @@
 <section id="tech-stack">
   <div class="section-eyebrow green">Tools We Use</div>
   <h2 class="section-title">The Stack Behind Your Growth</h2>
-  <p class="section-sub" style="margin-bottom:3rem;">Best-in-class tools across automation, social media, web development, and analytics — deployed with precision for measurable results.</p>
+  <p class="section-sub" style="margin-bottom:3rem;">Best-in-class tools across automation, social media, data engineering, and analytics — deployed with precision for measurable results.</p>
 
   <div class="tech-category">
     <div class="tech-category-label">AI &amp; Automation</div>
@@ -976,15 +977,15 @@
   </div>
 
   <div class="tech-category">
-    <div class="tech-category-label">Website &amp; Development</div>
+    <div class="tech-category-label">SQL &amp; Data Engineering</div>
     <div class="tech-grid">
-      <div class="tech-pill"><span class="tech-icon">⚛️</span>React / Next.js</div>
-      <div class="tech-pill"><span class="tech-icon">🌊</span>Webflow</div>
-      <div class="tech-pill"><span class="tech-icon">🔵</span>WordPress</div>
-      <div class="tech-pill"><span class="tech-icon">🎨</span>Tailwind CSS</div>
-      <div class="tech-pill"><span class="tech-icon">✏️</span>Figma</div>
-      <div class="tech-pill"><span class="tech-icon">🖼️</span>Framer</div>
-      <div class="tech-pill"><span class="tech-icon">🚀</span>Vercel</div>
+      <div class="tech-pill"><span class="tech-icon">🗄️</span>SQL Server</div>
+      <div class="tech-pill"><span class="tech-icon">🐘</span>PostgreSQL</div>
+      <div class="tech-pill"><span class="tech-icon">🔥</span>Databricks</div>
+      <div class="tech-pill"><span class="tech-icon">🏗️</span>Azure Data Factory</div>
+      <div class="tech-pill"><span class="tech-icon">🌊</span>dbt</div>
+      <div class="tech-pill"><span class="tech-icon">☁️</span>Azure Synapse</div>
+      <div class="tech-pill"><span class="tech-icon">📦</span>Delta Lake</div>
     </div>
   </div>
 
@@ -1011,13 +1012,13 @@
     </div>
     <div class="section-eyebrow" style="text-align:center;">Let's Talk</div>
     <h2>Let's Grow Your Business</h2>
-    <p>Ready to automate your operations, build a social media presence that converts, or launch a website that generates real leads? Let's talk — it's completely free.</p>
+    <p>Ready to automate your operations, build a social media presence that converts, or engineer a data infrastructure that powers smarter decisions? Let's talk — it's completely free.</p>
     <div class="contact-info">
-      <a href="mailto:your@email.com">✉️ your@email.com</a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">💼 linkedin.com/in/yourprofile</a>
+      <a href="mailto:oolusegun@firstdataconsultingllc.com">✉️ oolusegun@firstdataconsultingllc.com</a>
+      <a href="tel:+12143929530">📞 +1 (214) 392-9530</a>
     </div>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="mailto:your@email.com" class="btn-amber">Book a Free Strategy Call</a>
+      <a href="#" class="btn-amber" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oolusegun79/30min'});return false;">Book a Free Strategy Call</a>
       <a href="#services" class="btn-secondary">View Services</a>
     </div>
   </div>
@@ -1028,7 +1029,7 @@
 <footer>
   <img src="brand_assets/firstdatalogo.png" alt="FirstDATA Consulting LLC" />
   <p>© 2026 FirstDATA Consulting LLC. All rights reserved.</p>
-  <p style="font-size:0.75rem;color:var(--text-muted);">AI Automation · Social Media · Website Design</p>
+  <p style="font-size:0.75rem;color:var(--text-muted);">AI Automation · Social Media · SQL / Data Engineering</p>
 </footer>
 
 

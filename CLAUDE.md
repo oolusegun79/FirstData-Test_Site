@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **single-page marketing website** for FirstDATA — a digital growth agency offering AI Automation, Social Media Presence, and Website Design services. The entire site lives in one file (`index.html`) with all CSS written inline inside `<style>` tags. There is no build step, no package.json, and no framework.
+This is a **single-page marketing website** for FirstDATA — a digital growth agency offering AI Automation, Social Media Presence, and SQL Database / Data Engineering services. The entire site lives in one file (`index.html`) with all CSS written inline inside `<style>` tags. There is no build step, no package.json, and no framework.
 
 ## Commands
 
@@ -113,4 +113,3 @@ Primary: `#016839` · Secondary: `#D6FCEA` · Accent: `#FAA61A`
 - Do not "improve" a reference design — match it
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
-- Do not use default Tailwind blue/indigo as primary color
