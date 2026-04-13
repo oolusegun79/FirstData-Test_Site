@@ -1,4 +1,4 @@
-# FirstDATA — 90-Day Action Plan
+# FirstDATA — 90-Day Business Plan
 
 > Modeled after Alex Hormozi's framework from *$100M Offers*.
 > Budget: under $1,000 upfront. Goal: first paying customer as fast as possible.
