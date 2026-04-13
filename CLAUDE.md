@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Single-page marketing website for **FirstDATA** — a digital growth agency offering AI Automation, Social Media Presence, and SQL Database / Data Engineering services. The entire site is one file (`index.html`) with all CSS inline in a `<style>` block. No build step, no package.json, no framework.
+Single-page marketing website for **FirstDATA** — an AI & data solutions consultancy offering two services: **AI Automation** and **SQL Database / Data Engineering**. The entire site is one file (`index.html`) with all CSS inline in a `<style>` block. No build step, no package.json, no framework.
 
 **Contact:** oolusegun@firstdataconsultingllc.com · +1 (214) 392-9530  
 **Booking:** Calendly popup at `https://calendly.com/oolusegun79/30min` — wired to both the nav "Book Consultation" button and the contact section CTA.
@@ -41,12 +41,12 @@ node screenshot.mjs http://localhost:3000/#about about
 |---|---|
 | `#hero` | Full-viewport hero, animated organic shape graphic, floating status cards |
 | `#stats` | 4-cell stat strip with count-up animation |
-| `#specializations` | 3 deep-dive spec cards (one per service pillar) |
+| `#specializations` | 2 deep-dive spec cards in a 2-column grid |
 | `#about` | Two-column: real headshot left, expertise list right |
-| `#services` | 3-column service card grid |
+| `#services` | 2-column service card grid |
 | `#process` | 4-step numbered timeline |
-| `#case-studies` | 4 result cards with metrics |
-| `#tech-stack` | Tool pills grouped by category |
+| `#case-studies` | 3 result cards with metrics |
+| `#tech-stack` | Tool pills grouped by category (3 categories) |
 | `#contact` | Centered card with email, phone, and Calendly CTA |
 
 **CSS design token system** — use these custom properties; never hard-code colour values:
@@ -62,7 +62,7 @@ node screenshot.mjs http://localhost:3000/#about about
 
 **Typography:** `'Syne'` (headings, `letter-spacing: -0.03em`) + `'Inter'` (body, `line-height: 1.7`) via Google Fonts.
 
-**Spec card theming:** `.spec-card.llm` = amber, `.spec-card.rag` = blue, `.spec-card.platform` = green. Each variant has scoped CSS for icon background, bullet colour, tag colour, and top-border gradient. Follow this pattern for any new spec cards.
+**Spec card theming:** `.spec-card.llm` = amber (AI Automation, card 01), `.spec-card.platform` = green (SQL/Data Engineering, card 02). Each variant has scoped CSS for icon background, bullet colour, tag colour, and top-border gradient. Follow this pattern for any new spec cards.
 
 **Count-up animation:** Elements with `data-count` and `data-suffix` in `#stats` are driven by an `IntersectionObserver` easing loop in the inline `<script>` at the bottom of `<body>`.
 
